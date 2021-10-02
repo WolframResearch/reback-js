@@ -1,23 +1,24 @@
 /*eslint no-underscore-dangle: "off", react/no-is-mounted: "off" */
 
-import _ from 'underscore';
-import globals, {now} from 'globals';
-import {create as createLogger} from 'loggers';
+import globals, {now, DEBUG, DEBUG_REBACK, PROFILE_REBACK, TESTING} from './globals';
 
-import SyncPromise from '../SyncPromise';
-import PromiseChain from '../PromiseChain';
+import {getLogger} from 'logger-js';
+
+import SyncPromise from 'sync-promise-js';
+
+import PromiseChain from './PromiseChain';
 import RenderPending from './RenderPending';
 import {sameShallow, applyModificationsCached, compareMaps, d} from './util';
-import {start as startTiming, end as stopTiming} from '../profiling';
-import Cache from '../datastructures/Cache';
-import HashCache from '../datastructures/HashCache';
+import {start as startTiming, end as stopTiming} from './profiling';
+import Cache from './Cache';
+import HashCache from './HashCache';
 import emptyContext from './EmptyContext';
 import {addUsedContextAttributes, anyUsedAttribute} from './Context';
 import SingleEntryCache from './SingleEntryCache';
 
 import type Context from './Context';
 
-const logger = createLogger('reback');
+const logger = getLogger('reback');
 
 /**
  * ID for a scheduled task, which could be regular timeout or a requested animation frame (or both, theoretically).
@@ -47,7 +48,8 @@ const Phase = {
     RESTORING: 6
 };
 const PHASE_NAMES = {};
-_.each(Phase, (value, name) => {
+Object.keys(Phase).forEach(name => {
+    const value = Phase[name];
     PHASE_NAMES[value] = name;
 });
 const BITS_PHASE = 3;
@@ -2066,7 +2068,7 @@ export default class Component<
     }
 }
 
-if (DEBUG_REBACK || DEBUG || PROFILE || PROFILE_REBACK) {
+if (DEBUG_REBACK || DEBUG || PROFILE_REBACK) {
     // If we have any sort of debugging or profiling enabled, expose Reback's internal utility functions
     // in the global scope so that we can easily experiment with them, e.g. querying their optimization status.
     globals._rebackUtils = {

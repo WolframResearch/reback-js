@@ -1,4 +1,4 @@
-import Cache from '../datastructures/Cache';
+import Cache from './Cache';
 
 /**
  * A cache that can store (up to) a single entry.

@@ -1,4 +1,4 @@
-import globals from 'globals';
+import globals from './globals';
 import * as devTools from './devTools';
 
 export {default as Component} from './Component';

@@ -1,5 +1,6 @@
+import {PROFILE_REBACK} from "./globals";
 import {sameValueZero} from './util';
-import * as profiling from '../profiling';
+import * as profiling from './profiling';
 
 import type {AnyInternalData} from './Component';
 

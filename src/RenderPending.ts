@@ -1,3 +1,5 @@
+import {DEBUG_REBACK} from "./globals";
+
 function RenderPendingDebug(cause?: any) {
     // This version of the exception constructor is used when DEBUG_REBACK is enabled.
     // It "remembers" an object passed in which describes why the component is pending,

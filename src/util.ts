@@ -1,5 +1,3 @@
-import _ from 'underscore';
-
 import RenderPending from './RenderPending';
 
 /**
@@ -10,7 +8,7 @@ import RenderPending from './RenderPending';
  */
 export function sameValueZero(a: unknown, b: unknown, key?: any) {
     // cf. https://developer.mozilla.org/en-US/docs/Web/JavaScript/Equality_comparisons_and_sameness
-    return a === b || (_.isNaN(a) && _.isNaN(b));
+    return a === b || (Number.isNaN(a) && Number.isNaN(b));
 }
 
 /**
