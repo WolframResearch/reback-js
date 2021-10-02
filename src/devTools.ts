@@ -1,5 +1,3 @@
-import _ from 'underscore';
-
 import {anyUsedAttribute} from './Context';
 
 import type Context from './Context';
@@ -40,7 +38,7 @@ type LogOptions = {
 const consoleLog = console.log;
 
 function logComponent(component: AnyComponent, {compareContext, _indentation = 0, _highlight = []}: LogOptions = {}) {
-    const isHighlighted = _.contains(_highlight, component);
+    const isHighlighted = _highlight.indexOf(component) >= 0;
     let prefix = '';
     for (let i = 0; i < _indentation; ++i) {
         prefix += '  ';
@@ -81,7 +79,7 @@ function logComponent(component: AnyComponent, {compareContext, _indentation = 0
 export function logRenderTree(component: AnyComponent, {prune = [], _indentation = 0, ...rest}: LogOptions = {}) {
     logComponent(component, {_indentation, ...rest});
     const name = component.constructor.name;
-    if (!_.contains(prune, name) && component._reback.childrenData) {
+    if (prune.indexOf(name) < 0 && component._reback.childrenData) {
         component._reback.childrenData.renderedChildren.forEach(({instance}) => {
             logRenderTree(instance, {prune, _indentation: _indentation + 1, ...rest});
         });
