@@ -2,7 +2,7 @@
 
 import globals, {now, DEBUG, DEBUG_REBACK, PROFILE_REBACK, TESTING} from './globals';
 
-import {getLogger} from 'logger-js';
+import {getLogger} from 'loggers-js';
 
 import SyncPromise from 'sync-promise-js';
 

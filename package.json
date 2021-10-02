@@ -1,16 +1,23 @@
 {
   "name": "reback-js",
   "version": "1.0.0",
-  "main": "index.js",
+  "main": "lib/index.js",
+  "types": "lib/index.d.ts",
   "license": "MIT",
   "scripts": {
     "build": "rollup -c"
   },
   "dependencies": {
-    "logger-js": "^1.0.0",
+    "loggers-js": "^1.0.0",
     "sync-promise-js": "^1.0.0"
   },
   "devDependencies": {
-    "@types/node": "^16.10.2"
+    "@rollup/plugin-commonjs": "^21.0.0",
+    "@rollup/plugin-node-resolve": "^13.0.5",
+    "@rollup/plugin-typescript": "^8.2.5",
+    "@types/node": "^16.10.2",
+    "rollup": "^2.58.0",
+    "tslib": "^2.3.1",
+    "typescript": "^4.4.3"
   }
 }
