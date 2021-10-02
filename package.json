@@ -2,5 +2,15 @@
   "name": "reback-js",
   "version": "1.0.0",
   "main": "index.js",
-  "license": "MIT"
+  "license": "MIT",
+  "scripts": {
+    "build": "rollup -c"
+  },
+  "dependencies": {
+    "logger-js": "^1.0.0",
+    "sync-promise-js": "^1.0.0"
+  },
+  "devDependencies": {
+    "@types/node": "^16.10.2"
+  }
 }
