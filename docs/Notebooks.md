@@ -1,5 +1,7 @@
 # Reback in the notebook world
 
+This document describes some of the details of how Reback is used to implement a notebook interface.
+
 ## Where to do typical cell/box-related things
 
 * basic processing of underlying expression: in `initialize`
@@ -46,20 +48,3 @@ Note that this does *not* work on the box level, because the nesting of boxes ca
     * if linearized items are not the same as before (`===` check should be enough):
         * if no `CodeMirror` instance exists yet: create a `CodeMirror` instance `cm` with that content
         * if `CodeMirror` exists already: update its content (maybe try to preserve cursor position)
-
-## Open questions, thoughts
-
-* Should we have a decorator to explicitly distinguish (public?) component methods that are safe to call before rendering (and maybe also a decorators for methods that are not, i.e. they should only be called after or while the component is rendered)?
-
-    ```
-    class A extends Component {
-        @public @dependentOnRender
-        resolveSomeOptionValue() {
-        }
-        
-        @independentFromRender
-        initializeSomething() {
-        }
-    }
-    ```
-* Options handling will change: We want the concrete option classes to be simpler and more "functional", so they can be used outside the context of another component's render pass. They would not be `Component`s themselves anymore, but just simple classes with static methods to process raw option values. There would still be a wrapper `Component` (similar to the current `BaseOption`) that takes care of the lifecycle of options, especially if they have a `Dynamic` value.

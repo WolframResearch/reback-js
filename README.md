@@ -6,7 +6,7 @@ Reback combines some of the ideas of [React](https://reactjs.org/) and [Backbone
 
 ## Goals
 
-We want a unified way to define various *components* in the notebook interface (notebooks, cells, boxes, options, dynamic values, etc). They all have in common that
+Reback provides a unified way to define various *components*, e.g. in the implementation of a [notebook interface](https://www.wolfram.com/notebooks/) (notebooks, cells, boxes, options, dynamic values, etc). They all have in common that
 
 * they need to be aware of their *lifecycle* (when they appear, disappear, etc),
 * there is a parent-child relationship between components, resulting in a render tree,
